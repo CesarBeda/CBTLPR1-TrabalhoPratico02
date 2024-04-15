@@ -28,7 +28,7 @@ public class TP02Ex08{
     }
 
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         
@@ -38,7 +38,7 @@ public class TP02Ex08{
         // Preenchendo a matriz original com valores digitados pelo usuario
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
-                System.out.print("Digite o valor para a posição [" + i + "][" + j + "]: ");
+                System.out.print("Digite o valor para a posicao [" + i + "][" + j + "]: ");
                 matrizOriginal[i][j] = scanner.nextDouble();
             }
         }

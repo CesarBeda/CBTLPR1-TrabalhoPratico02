@@ -33,10 +33,16 @@ do {
     double percValN = 0;
     double quantValP = 0;
     double quantValN = 0;
+    int tamArray = 0;
     int caracterValido;
-
-        System.out.print("Digite a quantidade de valores que serao adicionados: ");
-        int tamArray = sc.nextInt();
+    
+    System.out.print("Digite a quantidade de valores que serao adicionados (max=20): ");
+    tamArray = sc.nextInt();
+    
+    while ( tamArray > 20) {
+        System.out.print("Numero Invalido digite novamente: ");
+        tamArray = sc.nextInt();
+    }
         array2c = new double[tamArray];
 
         for(int c = 0 ; c < array2c.length ; ++c){

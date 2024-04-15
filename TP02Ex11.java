@@ -11,6 +11,43 @@ Caua Barros
 import java.util.Scanner;
 
 public class TP02Ex11 {
+
+    public static double calcularDeterminante(double[][] matriz) {
+        int n = matriz.length;
+        
+        if (n == 1) {
+            return matriz[0][0];
+        }
+        
+        double determinante = 0;
+        for (int j = 0; j < n; j++) {
+            determinante += matriz[0][j] * cofator(matriz, 0, j);
+        }
+        
+        return determinante;
+    }
+    
+    public static double cofator(double[][] matriz, int linha, int coluna) {
+        return Math.pow(-1, linha + coluna) * determinanteMenor(matriz, linha, coluna);
+    }
+    
+    public static double determinanteMenor(double[][] matriz, int linha, int coluna) {
+        int n = matriz.length;
+        double[][] menor = new double[n - 1][n - 1];
+        
+        for (int i = 0, p = 0; i < n; i++) {
+            if (i == linha) continue;
+            for (int j = 0, q = 0; j < n; j++) {
+                if (j == coluna) continue;
+                menor[p][q] = matriz[i][j];
+                q++;
+            }
+            p++;
+        }
+        
+        return calcularDeterminante(menor);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double[][] matriz2C;
@@ -52,44 +89,10 @@ public class TP02Ex11 {
 
         double determinante = calcularDeterminante(matriz2C);
 
-        System.out.println("\nO determinante da matriz é: " + determinante +"\n");
+        System.out.println("\nO determinante da matriz e: " + determinante +"\n");
 
         scanner.close();
     }
 
-    public static double calcularDeterminante(double[][] matriz) {
-        int n = matriz.length;
-        
-        if (n == 1) {
-            return matriz[0][0];
-        }
-        
-        double determinante = 0;
-        for (int j = 0; j < n; j++) {
-            determinante += matriz[0][j] * cofator(matriz, 0, j);
-        }
-        
-        return determinante;
-    }
     
-    public static double cofator(double[][] matriz, int linha, int coluna) {
-        return Math.pow(-1, linha + coluna) * determinanteMenor(matriz, linha, coluna);
-    }
-    
-    public static double determinanteMenor(double[][] matriz, int linha, int coluna) {
-        int n = matriz.length;
-        double[][] menor = new double[n - 1][n - 1];
-        
-        for (int i = 0, p = 0; i < n; i++) {
-            if (i == linha) continue;
-            for (int j = 0, q = 0; j < n; j++) {
-                if (j == coluna) continue;
-                menor[p][q] = matriz[i][j];
-                q++;
-            }
-            p++;
-        }
-        
-        return calcularDeterminante(menor);
-    }
 }
